@@ -431,9 +431,10 @@ body {
 
 }
 
-@media (max-width: 524px) {
-    .card{
-        width: 50%;
+@media (max-width: 360px) {
+    .cardContainer{
+        display: flex;
+        align-items: center;
     }
 }
 
