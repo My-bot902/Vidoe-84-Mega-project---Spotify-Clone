@@ -437,10 +437,20 @@ body {
 }
 
 @media (max-width: 360px) {
+    .card{
+        width: 66vw;
+    }
     .cardContainer{
+        margin: 0;
         display: flex;
         align-items: center;
     }
+    .signupbtn:hover {
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    width: 50px;
+}
 }
 
 @media (max-width: 768px) {
