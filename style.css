@@ -130,7 +130,6 @@ body {
 .cardContainer {
     margin: 30px;
     display: flex;
-    justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
     overflow-y: auto;
@@ -185,10 +184,11 @@ body {
     /* Makes the green color pop and look brighter */
 }
 
-.buttons{
-        display: flex;
-        gap: 10px;
+.buttons {
+    display: flex;
+    gap: 10px;
 }
+
 .buttons>* {
     margin: 0 12px;
 }
@@ -308,12 +308,16 @@ body {
 .seekbar {
     height: 4px;
     width: 98%;
-    background: black;
+    background: white;
     border-radius: 10px;
     position: absolute;
     bottom: 8px;
     margin: 6px;
     cursor: pointer;
+}
+
+.seekbar:hover {
+    outline: 0.1px solid rgba(0, 0, 0, 0.137);
 }
 
 .circle {
@@ -348,6 +352,20 @@ body {
     width: 125px;
     color: black;
     padding: 0 12px;
+}
+
+.timevol {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.volume {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
 }
 
 @media (max-width: 1200px) {
@@ -403,6 +421,13 @@ body {
         /* Set a standard readable size for the buttons */
         height: 24px;
     }
+        .timevol {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        gap: 13px;
+    }
 
     .seekbar {
         width: 88vw;
@@ -420,10 +445,11 @@ body {
     .seekbar {
         flex-grow: 1;
         height: 4px;
-        background-color: #4d4d4d;
+        background-color: white;
         border-radius: 2px;
         cursor: pointer;
     }
+
 
     .songtime {
         font-size: 12px;
@@ -437,20 +463,22 @@ body {
 }
 
 @media (max-width: 360px) {
-    .card{
+    .card {
         width: 66vw;
     }
-    .cardContainer{
+
+    .cardContainer {
         margin: 0;
         display: flex;
         align-items: center;
     }
+
     .signupbtn:hover {
-    color: white;
-    cursor: pointer;
-    font-size: 14px;
-    width: 50px;
-}
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+        width: 50px;
+    }
 }
 
 @media (max-width: 768px) {

@@ -1,4 +1,5 @@
 let currentSong = new Audio();
+let songs;
 
 function secondsToMinutesSeconds(seconds) {
     if (isNaN(seconds) || seconds < 0) {
@@ -52,7 +53,7 @@ const playMusic = (track, pause = false) => {
 
 async function main() {
     // Get the list of all the songs
-    let songs = await getSongs()
+    songs = await getSongs()
     playMusic(songs[0], true)
     // console.log(songs)
 
@@ -89,7 +90,7 @@ async function main() {
     })
 
 
-    // Attach an event listener to play, next and previous
+    // Attach an event listener to play
     play.addEventListener("click", () => {
         if (currentSong.paused) {
             currentSong.play()
@@ -99,6 +100,7 @@ async function main() {
             currentSong.pause()
             play.src = "img/play.svg"
         }
+        console.log("Play is clicked")
     })
 
     // Listen for timeupdate event
@@ -120,13 +122,13 @@ async function main() {
         document.querySelector(".left").style.left = "0"
     })
 
-// Attach the listener to the parent container (.left) instead of the button itself
-document.querySelector(".left").addEventListener("click", (event) => {
-    // If the clicked element (or its parent) is the close button
-    if (event.target.closest(".close")) {
-        document.querySelector(".left").style.left = "-120%";
-    }
-});
+    // Attach the listener to the parent container (.left) instead of the button itself
+    document.querySelector(".left").addEventListener("click", (event) => {
+        // If the clicked element (or its parent) is the close button
+        if (event.target.closest(".close")) {
+            document.querySelector(".left").style.left = "-120%";
+        }
+    });
 
 
     //=========== Click on the song also closes the hamburger
@@ -140,5 +142,41 @@ document.querySelector(".left").addEventListener("click", (event) => {
         });
     });
 }
+
+// Add an event listener to previous
+previous.addEventListener("click", () => {
+    currentSong.pause()
+    console.log("Previous clicked")
+    let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
+    if ((index - 1) >= 0) {
+        playMusic(songs[index - 1])
+    }
+    else{
+        alert("You are already at the First song!")
+    }
+})
+
+// Add an event listener to next
+next.addEventListener("click", () => {
+    currentSong.pause()
+    console.log("Next clicked")
+
+    let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
+    if ((index + 1) < songs.length) {
+        playMusic(songs[index + 1])
+    }
+    else{
+        alert("You are already at the last song!")
+    }
+})
+
+    // Add an event to volume
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
+        console.log("Setting volume to", e.target.value, "/ 100")
+        currentSong.volume = parseInt(e.target.value) / 100
+        if (currentSong.volume >0){
+            document.querySelector(".volume>img").src = document.querySelector(".volume>img").src.replace("mute.svg", "volume.svg")
+        }
+    })
 
 main()

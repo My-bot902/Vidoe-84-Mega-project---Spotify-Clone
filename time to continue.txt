@@ -1,1 +1,1 @@
-2:19:36==>Harry is tweaking but Azhan is sigma and already set some of responsiveness using AI
+4:00:15==>Adjusting media query max-width
