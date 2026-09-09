@@ -185,6 +185,10 @@ body {
     /* Makes the green color pop and look brighter */
 }
 
+.buttons{
+        display: flex;
+        gap: 10px;
+}
 .buttons>* {
     margin: 0 12px;
 }
@@ -197,6 +201,7 @@ body {
     outline: none;
     cursor: pointer;
     font-size: 16px;
+    width: 56px;
 }
 
 .signupbtn:hover {
@@ -373,7 +378,7 @@ body {
         bottom: 20px;
         /* Or whatever spacing you currently have from the bottom */
         width: 88vw;
-        left: 50%;
+        left: 48.5%;
         /* Moves the left edge to the exact center of the screen */
         transform: translateX(-50%);
         /* Shifts it back by half its own width to center it perfectly */
